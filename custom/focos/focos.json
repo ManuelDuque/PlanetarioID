@@ -1,0 +1,60 @@
+{
+  "focos": [
+    {
+      "brillo": 10,
+      "luzdifusa": [1.0, 1.0, 0.0, 1.0],
+      "luzambiente": [1.0, 1.0, 1.0, 1.0],
+      "luzspecular": [1.0, 1.0, 1.0, 1.0],
+      "posicion": [0.0, 100.0, 0.0, 0.0]
+    },
+    {
+      "brillo": 10,
+      "luzdifusa": [1.0, 1.0, 0.0, 1.0],
+      "luzambiente": [1.0, 1.0, 0.0, 1.0],
+      "luzspecular": [1.0, 1.0, 0.0, 1.0],
+      "posicion": [0.0, 100.0, 0.0, 0.0]
+    },
+    {
+      "brillo": 20,
+      "luzdifusa": [0.0, 0.0, 1.0, 0.7],
+      "luzambiente": [0.1, 0.3, 0.3, 0.7],
+      "luzspecular": [0.9, 0.0, 0.8, 0.7],
+      "posicion": [0, 100.0, 0, 0]
+    },
+    {
+      "brillo": 20,
+      "luzdifusa": [0.5, 0.0, 0.0, 0.7],
+      "luzambiente": [0.7, 0.3, 0.9, 0.9],
+      "luzspecular": [0.0, 0.5, 1.0, 1.0],
+      "posicion": [2.0, 1.0, 6.0, 0.0]
+    },
+    {
+      "brillo": 20,
+      "luzdifusa": [0.0, 0.5, 0.5, 0.4],
+      "luzambiente": [0.43, 0.26, 0.27, 0.77],
+      "luzspecular": [0.1, 0.7, 0.18, 1.0],
+      "posicion": [7.0, 0.7, 2.0, 1.0]
+    },
+    {
+      "brillo": 20,
+      "luzdifusa": [0.5, 0.1, 0.2, 1.0],
+      "luzambiente": [0.35, 0.4, 0.1, 1.0],
+      "luzspecular": [0.15, 0.2, 0.0, 1.0],
+      "posicion": [1.0, -1.0, -4.0, 1.0]
+    },
+    {
+      "brillo": 20,
+      "luzdifusa": [0.5, 0.4, 0.0, 1.0],
+      "luzambiente": [0.2, 0.57, 0.4, 1.0],
+      "luzspecular": [0.6, 0.1, 0.3, 1.0],
+      "posicion": [1.0, 7.0, -1.0, 0.0]
+    },
+    {
+      "brillo": 20,
+      "luzdifusa": [0.5, 0.8, 0.6, 0.45],
+      "luzambiente": [0.5, 0.5, 0.5, 0.8],
+      "luzspecular": [0.2, 0.2, 0.2, 0.5],
+      "posicion": [1.0, -7.0, -6.0, 0.0]
+    }
+  ]
+}
