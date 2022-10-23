@@ -1,0 +1,303 @@
+{
+  "focos": [
+    {
+      "brillo": 10000,
+      "luzdifusa": [1.0, 1.0, 1.0, 1.0],
+      "luzambiente": [1.0, 1.0, 1.0, 0.0],
+      "luzspecular": [1.0, 1.0, 1.0, 1.0],
+      "posicion": [50.0, 0.0, 0.0, 0.0]
+    },
+    {
+      "brillo": 10,
+      "luzdifusa": [1.0, 1.0, 0.0, 1.0],
+      "luzambiente": [6.0, 1.0, 3.0, 1.0],
+      "luzspecular": [1.0, 1.0, 2.0, 1.0],
+      "posicion": [40.0, 50.0, 0.0, 0.0]
+    },
+    {
+      "brillo": 20,
+      "luzdifusa": [0.0, 0.0, 1.0, 0.7],
+      "luzambiente": [2.1, 0.3, 1.3, 0.7],
+      "luzspecular": [0.9, 0.0, 1.8, 0.7],
+      "posicion": [60.0, 4.0, 3.0, 0.0]
+    },
+    {
+      "brillo": 20,
+      "luzdifusa": [0.5, 1.0, 2.0, 0.7],
+      "luzambiente": [0.7, 0.3, 0.9, 0.9],
+      "luzspecular": [0.0, 0.5, 1.0, 1.0],
+      "posicion": [55.0, 12.0, 13.0, 0.0]
+    },
+    {
+      "brillo": 20,
+      "luzdifusa": [0.0, 0.5, 0.5, 0.4],
+      "luzambiente": [0.43, 0.26, 0.27, 0.77],
+      "luzspecular": [0.1, 0.7, 0.18, 1.0],
+      "posicion": [50.0, 7.7, 2.0, 1.0]
+    },
+    {
+      "brillo": 20,
+      "luzdifusa": [0.5, 0.1, 0.2, 1.0],
+      "luzambiente": [0.35, 0.4, 0.1, 1.0],
+      "luzspecular": [0.15, 0.2, 0.0, 0.0],
+      "posicion": [50.0, 13.0, 3.0, 1.0]
+    },
+    {
+      "brillo": 20,
+      "luzdifusa": [0.5, 0.4, 0.0, 1.0],
+      "luzambiente": [0.2, 0.57, 0.4, 1.0],
+      "luzspecular": [0.6, 0.1, 0.3, 10.0],
+      "posicion": [40.0, 7.0, -30.0, 2.0]
+    },
+    {
+      "brillo": 20,
+      "luzdifusa": [0.5, 0.8, 0.6, 0.45],
+      "luzambiente": [0.5, 1.5, 1.5, 2.8],
+      "luzspecular": [6.2, 0.2, 0.2, 0.5],
+      "posicion": [50.0, -70.0, -60.0, 0.0]
+    }
+  ],
+  "camaras": [
+    {
+      "posx": 5,
+      "posy": 5,
+      "posz": 5,
+      "povx": 0,
+      "povy": 0,
+      "povz": 0,
+      "orientacionx": 0,
+      "orientaciony": 1,
+      "orientacionz": 0
+    },
+    {
+      "posx": 8,
+      "posy": 1.8,
+      "posz": 0,
+      "povx": 0,
+      "povy": 0,
+      "povz": 0,
+      "orientacionx": 0,
+      "orientaciony": 1,
+      "orientacionz": 0
+    },
+    {
+      "posx": 0,
+      "posy": 11,
+      "posz": 0,
+      "povx": 0,
+      "povy": 0,
+      "povz": 0,
+      "orientacionx": 1,
+      "orientaciony": 1,
+      "orientacionz": 1
+    },
+    {
+      "posx": -2,
+      "posy": 6,
+      "posz": 6,
+      "povx": 0,
+      "povy": 1,
+      "povz": 0,
+      "orientacionx": 1,
+      "orientaciony": 1,
+      "orientacionz": 0
+    }
+  ],
+  "astros": [
+    {
+      "radio": 0.0,
+      "wRotAstro": 0.0,
+      "wRotProp": 0.2,
+      "tamanio": 0.01,
+      "nombre": "Sol",
+      "astros": [
+        {
+          "radio": 200,
+          "wRotAstro": 8.8,
+          "wRotProp": 0.4,
+          "tamanio": 0.0005,
+          "nombre": "Mercurio",
+          "astros": [],
+          "material": {
+            "definition": {
+              "brillo": 10.0,
+              "luzdifusa": [0.5, 0.5, 0.5, 1.0],
+              "luzambiente": [0.05, 0.05, 0.05, 1.0],
+              "luzspecular": [0.7, 0.7, 0.7, 1.0]
+            }
+          }
+        },
+        {
+          "radio": 230.0,
+          "wRotAstro": 7.4,
+          "wRotProp": 0.35,
+          "tamanio": 0.0015,
+          "nombre": "Venus",
+          "astros": [],
+          "material": {
+            "definition": {
+              "brillo": 25.6,
+              "luzdifusa": [0.714, 0.4284, 0.18144, 1.0],
+              "luzambiente": [0.2125, 0.1275, 0.054, 1.0],
+              "luzspecular": [0.393548, 0.271906, 0.166721, 1.0]
+            }
+          }
+        },
+        {
+          "radio": 270.0,
+          "wRotAstro": 6.5,
+          "wRotProp": 0.35,
+          "tamanio": 0.0018,
+          "nombre": "Tierra",
+          "astros": [
+            {
+              "radio": 20.0,
+              "wRotAstro": 30.45,
+              "wRotProp": 0.55,
+              "tamanio": 0.0005,
+              "nombre": "Luna",
+              "astros": [],
+              "material": {
+                "definition": {
+                  "brillo": 10.0,
+                  "luzdifusa": [0.5, 0.5, 0.5, 1.0],
+                  "luzambiente": [0.05, 0.05, 0.05, 1.0],
+                  "luzspecular": [0.7, 2.7, 0.7, 1.0]
+                }
+              }
+            }
+          ],
+          "material": {
+            "definition": {
+              "brillo": 10.0,
+              "luzdifusa": [0.4, 0.5, 0.5, 1.0],
+              "luzambiente": [0.0, 0.25, 0.55, 1.0],
+              "luzspecular": [0.04, 0.73, 0.7, 1.0]
+            }
+          }
+        },
+        {
+            "radio": 300.0,
+            "wRotAstro": 4.5,
+            "wRotProp": 0.33,
+            "tamanio": 0.0013,
+            "nombre": "Marte",
+            "astros": [],
+            "material": {
+              "definition": {
+                "brillo": 12.8,
+                "luzdifusa": [0.7038, 0.27048, 0.0828, 1.0],
+                "luzambiente": [0.79125, 0.0735, 0.0225, 1.0],
+                "luzspecular": [0.756777, 0.137622, 0.086014, 1.0]
+              }
+            }
+          },
+          {
+            "radio": 410.0,
+            "wRotAstro": 3.0,
+            "wRotProp": 0.66,
+            "tamanio": 0.004,
+            "nombre": "Jupiter",
+            "astros": [
+              {
+                "radio": 60.0,
+                "wRotAstro": 17.45,
+                "wRotProp": 0.55,
+                "tamanio": 0.0006,
+                "nombre": "Ío",
+                "astros": [],
+                "material": {
+                  "definition": {
+                    "brillo": 51.2,
+                    "luzdifusa": [0.5508, 0.2118, 0.066, 1.0],
+                    "luzambiente": [0.2295, 0.08825, 0.0275, 1.0],
+                    "luzspecular": [0.580594, 0.223257, 0.0695701, 1.0]
+                  }
+                }
+              },
+              {
+                "radio": 40.0,
+                "wRotAstro": 25.5,
+                "wRotProp": 0.75,
+                "tamanio": 0.0004,
+                "nombre": "Europa",
+                "astros": [],
+                "material": {
+                  "definition": {
+                    "brillo": 9.84615,
+                    "luzdifusa": [0.427451, 0.470588, 0.541176, 1.0],
+                    "luzambiente": [0.105882, 0.058824, 0.113725, 1.0],
+                    "luzspecular": [0.333333, 0.333333, 0.521569, 1.0]
+                  }
+                }
+              }
+            ],
+            "material": {
+              "definition": {
+                "brillo": 25.6,
+                "luzdifusa": [0.714, 0.4284, 0.18144, 1.0],
+                "luzambiente": [0.2125, 0.1275, 0.054, 1.0],
+                "luzspecular": [0.393548, 0.271906, 0.166721, 1.0]
+              }
+            }
+          },
+          {
+            "radio": 510.0,
+            "wRotAstro": 2.8,
+            "wRotProp": 0.65,
+            "tamanio": 0.0035,
+            "nombre": "Saturno",
+            "astros": [],
+            "material": {
+              "definition": {
+                "brillo": 100.0,
+                "luzdifusa": [0.75164, 0.60648, 0.22648, 1.0],
+                "luzambiente": [0.74725, 0.1995, 0.0745, 1.0],
+                "luzspecular": [0.628281, 0.555802, 0.366065, 1.0]
+              }
+            }
+          },
+          {
+            "radio": 580.0,
+            "wRotAstro": 2.7,
+            "wRotProp": 0.45,
+            "tamanio": 0.003,
+            "nombre": "Urano",
+            "astros": [],
+            "material": {
+              "definition": {
+                "brillo": 10.0,
+                "luzdifusa": [0.5, 0.5, 0.5, 1.0],
+                "luzambiente": [0.05, 0.05, 0.05, 1.0],
+                "luzspecular": [0.7, 0.7, 0.7, 1.0]
+              }
+            }
+          },
+          {
+            "radio": 660.0,
+            "wRotAstro": 2.5,
+            "wRotProp": 0.45,
+            "tamanio": 0.0026,
+            "nombre": "Neptuno",
+            "astros": [],
+            "material": {
+              "definition": {
+                "brillo": 100.0,
+                "luzdifusa": [0.75164, 0.60648, 0.22648, 1.0],
+                "luzambiente": [0.24725, 0.1995, 0.0745, 1.0],
+                "luzspecular": [0.628281, 0.555802, 0.366065, 1.0]
+              }
+            }
+          }
+      ],
+      "material": {
+        "definition": {
+          "brillo": 100.0,
+          "luzdifusa": [0.75164, 0.60648, 0.22648, 1.0],
+          "luzambiente": [0.24725, 0.1995, 0.0745, 1.0],
+          "luzspecular": [0.928281, 0.855802, 0.366065, 1.0]
+        }
+      }
+    }
+  ]
+}

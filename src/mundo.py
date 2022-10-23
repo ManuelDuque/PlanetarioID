@@ -1,6 +1,6 @@
 import modelo as model
 
-from OpenGL.GLUT import * 
+from OpenGL.GLUT import *
 from OpenGL.GLU import *
 from OpenGL.GL import *
 
@@ -26,7 +26,10 @@ class Mundo:
         ...
     }
     '''
-    props = {'activeCamera': None, 'activeMaterial': None}
+    props = {'activeCamera': None}
+    TIME = 0.05
+    SPEED = 1
+    GENERAL_SCALA = 0.005
     
     # Distintas opciones del menu.
     opcionesMenu = {
@@ -43,20 +46,11 @@ class Mundo:
       "CAMARA_1": 10,
       "CAMARA_2": 11,
       "CAMARA_3": 12,
-      "CAMARA_4": 13,
-      "MATERIAL_1": 14,
-      "MATERIAL_2": 15,
-      "MATERIAL_3": 16,
-      "MATERIAL_4": 17,
-      "MATERIAL_5": 18,
-      "MATERIAL_6": 19,
-      "MATERIAL_7": 20,
-      "MATERIAL_8": 21,
-      "MATERIAL_9": 22,
+      "CAMARA_4": 13
     }
 
     #Número de vistas diferentes.
-    numCamaras=3
+    numCamaras = 4
 
     #Definimos los distintos colores que usaremos para visualizar nuestro Sistema Planetario.
     #Negro, Verde oscuro, Azul oscuro, Blanco, Verde claro, Azul claro
@@ -71,33 +65,26 @@ class Mundo:
         self.aspect = self.width/self.height
         self.angulo = 0
         self.window=0
-        self.Sol=model.Modelo()
+        self.Sol = model.Modelo()
 
-        #Tamaño de los ejes y del alejamiento de Z.
+        # Tamaño de los ejes y del alejamiento de Z.
         self.tamanio=0
         self.z0=0
 
-        #Factor para el tamaño del modelo.
-        self.escalaGeneral = 0.005
-
-        #Rotacion de los modelos.
+        # Rotacion de los modelos.
         self.alpha=0
         self.beta=0
 
-        #Variables para la gestion del ratón.
+        # Variables para la gestion del ratón.
         self.xold=0
         self.yold=0
         self.zoom=1.0
 
-        #Vistas del Sistema Planetario.
-        #modelo.tipoVista iForma
+        # Vistas del Sistema Planetario.
+        # modelo.tipoVista iForma
         self.iDibujo=3
         self.iFondo=0
-        self.iForma=6
-
-        # Cargamos todos los componentes custom
-        for customType in CustomType:
-            self.cargarComponente(customType)
+        self.iForma=9
 
     def drawAxis(self):
         #Inicializamos
@@ -125,8 +112,15 @@ class Mundo:
         glEnd()
         glEnable(GL_LIGHTING)
 
-    def drawModel(self,forma, escala):
-        forma.Draw_Model(self.iForma, escala, self.zoom)
+    def drawModel(self, forma, escala):
+        '''
+        Permite dibujar a un cuerpo dado escalandolo.
+
+        ## Parámetros:
+        - forma: Modelo.
+        - escala: Tamaño del modelo.
+        '''
+        forma.Draw_Model(self.iForma, escala * Mundo.GENERAL_SCALA, self.zoom)
 
     def display(self):
         glClearDepth(1.0)
@@ -145,13 +139,56 @@ class Mundo:
         glRotatef(self.beta, 0.0, 1.0, 0.0)
 
         #Establecemos el color del Modelo.
-        glColor3f(self.colores[self.getIDibujo()][0], self.colores[self.getIDibujo()][1], self.colores[self.getIDibujo()][2])
-            
-        #Pintamos el modelo.
-        self.drawModel(self.Sol,self.escalaGeneral)
+        self.setColors()
+
+        # Draw the astros
+        astro = self.obtenerProp(CustomType.ASTROS)[0]
+        Mundo.TIME = astro.display(
+            Mundo.TIME, Mundo.SPEED, zoom=self.zoom,
+            drawModelCallback=self.drawModel,
+            setColorsCallback=self.setColors,
+            orbits=True
+        )
+
+        # Draw the stars
+        self.drawStars()
 
         glFlush()
         glutSwapBuffers()
+
+    def drawStars(self):
+        glDisable(GL_LIGHTING)
+        glBegin(GL_POINTS)
+        self.setColors()
+
+        for star in self.obtenerProp(name='stars'):
+            glVertex3d(star[0], star[1], star[2])
+
+        glEnd()
+        glEnable(GL_LIGHTING)
+        pass
+
+    def generateStars(self):
+        import random
+        stars = []
+        for x in range(-10, 10, 2):
+            for y in range(-10, 10, 2):
+                for z in range(-10, 10, 2):
+                    stars.append(
+                        [
+                            x + self.zoom + random.uniform(0, 2),
+                            y + self.zoom + random.uniform(0, 2),
+                            z + self.zoom + random.uniform(0, 2)
+                        ]
+                    )
+        print(f"Se han generado las estrellas {stars}")
+        self.guardarProp(name='stars', value=stars)
+
+    def setColors(self, colors=[1.0, 1.0, 1.0]):
+        '''
+        Permite establecer un color.
+        '''
+        glColor3f(colors[0], colors[1], colors[2])
 
     #Funcion para gestionar los movimientos del raton.
     def onMouse(self, button, state, x, y):
@@ -212,22 +249,8 @@ class Mundo:
             self.setIForma( opcion )
         elif ( opcion in range( self.opcionesMenu["CAMARA_1"], self.opcionesMenu["CAMARA_4"] + 1 ) ):
             self.setICamera( opcion )
-        elif ( opcion in range( self.opcionesMenu["MATERIAL_1"], self.opcionesMenu["MATERIAL_9"] + 1 ) ):
-            self.setIMaterial( opcion )
         glutPostRedisplay()
         return opcion
-    
-    def setIMaterial(self, opcion):
-        '''
-        Establece el material seleccionado.
-        '''
-        materialTarget = opcion - self.opcionesMenu["MATERIAL_1"]
-        materiales = self.obtenerProp(CustomType.MATERIALES)
-        if materialTarget in range(0, len(materiales)):
-            print(f"Material {materialTarget} ha cambiado desde el menú...")
-            material: Material = materiales[materialTarget]
-            self.props['activeMaterial'] = material
-            material.activarMaterial()
     
     def setICamera(self, opcion):
         '''
@@ -239,14 +262,37 @@ class Mundo:
         if cameraTarget in range(0, len(cameras)):
             print(f"Cámara {cameraTarget} ha cambiado desde el menú...")
             # Change the active camera custom prop to the selected camera
-            self.props['activeCamera'] = cameras[cameraTarget]
+            self.guardarProp(name='activeCamera', value=cameras[cameraTarget])
+    
+    @staticmethod
+    def loadModel(object:model):
+        object.setNVertices( Mundo.obtenerProp(name='nvertices') )
+        object.setNCaras( Mundo.obtenerProp(name='ncaras') )
+        object.setCaras( Mundo.obtenerProp(name='caras') )
+        object.setVertices( Mundo.obtenerProp(name='vertices') )
 
     def cargarModelo(self, nombre):
+        # Load all the custom components
+        for customType in CustomType:
+            self.cargarComponente(customType)
+        # Active the first camera
+        self.guardarProp(name='activeCamera', value=self.obtenerProp( CustomType.CAMARAS )[0])
+        # Active the foco zero
+        self.obtenerProp(CustomType.FOCOS)[0].toggleFoco()
+        # Select the centered astro
+        from custom.astro import Astro
+        self.Sol:Astro = self.obtenerProp(CustomType.ASTROS)[0]
+        # Get the vertices and caras
         _, vertices, caras = self.Sol.load(nombre)
-        self.Sol.setNVertices(len(vertices))
-        self.Sol.setNCaras(len(caras))
-        self.Sol.setCaras(caras)
-        self.Sol.setVertices(vertices)
+        # Save the nvertices, ncaras, caras and vertices
+        self.guardarProp(name='nvertices', value=len(vertices))
+        self.guardarProp(name='ncaras', value=len(caras))
+        self.guardarProp(name='vertices', value=vertices)
+        self.guardarProp(name='caras', value=caras)
+        # Load all the models recursively for each astro in the universe
+        self.Sol.loadModelsRecursive()
+        # Generate the stars
+        self.generateStars()
 
     def getWidth(self):
         return self.width
@@ -272,18 +318,35 @@ class Mundo:
     def getIForma(self):
         return self.iForma
 
-    def obtenerProp(self, type: CustomType=None, name: str=None):
+    @staticmethod
+    def obtenerProp(type: CustomType=None, name: str=None):
         '''
         Obtiene la respuesta deserializada almacenada en las props.
 
         ### Parámetros:
-        - type: Valor enumerado de la clase CustomType que representa la propiedad que se quiere obtener. 
+        - type: Valor enumerado de la clase CustomType que representa la propiedad que se quiere obtener.
+        - name: Nombre de la propiedad a buscar en las props del mundo.
         '''
         if type is None and name is None:
             raise Exception(f"Call to obtenerProp method has failed. Remember give a type or a prop name to get the prop!")
-        typeText = type.getPropName() if type is not None else None
-        toSearch = typeText if type is not None else name
-        return self.props.get(toSearch, None)
+        propName = type.getPropName() if type is not None else None
+        propName = propName if propName is not None else name
+        return Mundo.props.get(propName, None)
+
+    @staticmethod
+    def guardarProp(type: CustomType=None, name: str=None, value=None):
+        '''
+        Guarda una nueva variable en las props del mundo.
+
+        ### Parámetros:
+        - type: Valor enumerado de la clase CustomType que representa la propiedad que se quiere guardar.
+        - name: Nombre de la propiedad a guardar en las props del mundo.
+        '''
+        if type is None and name is None:
+            raise Exception(f"Call to guardarProp method has failed. Remember give a type or a prop name to get the prop!")
+        propName = type.getPropName() if type is not None else None
+        propName = propName if propName is not None else name
+        Mundo.props.update( { propName: value } )
 
     def cargarComponente(self, type: CustomType):
         '''
@@ -291,7 +354,7 @@ class Mundo:
         type: Valor CustomType que indica el nombre del componente a cargar. Debe coincidir con el nombre del fichero .json.
         '''
         import json
-        with open( type.getPath() ) as file:
+        with open( type.getPath(), encoding="utf-8" ) as file:
             data = json.load(file)
             typeClass = type.getClass()
             # Check if the custom type class has the method deserialize like attribute
@@ -299,6 +362,6 @@ class Mundo:
             if customTypeHasMethod and callable(typeClass.deserialize):
                 # If the custom type has the attribute and it is callable (it is a function)
                 response = typeClass.deserialize(data)
-                self.props.update({type.getPropName(): response})
+                self.guardarProp(type=type, value=response)
             else:
                 print(f"Error, custom type {typeClass} does not have method deserialize")

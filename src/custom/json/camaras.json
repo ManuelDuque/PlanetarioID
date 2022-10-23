@@ -1,0 +1,48 @@
+{
+  "camaras": [
+    {
+      "posx": 5,
+      "posy": 5,
+      "posz": 5,
+      "povx": 0,
+      "povy": 0,
+      "povz": 0,
+      "orientacionx": 0,
+      "orientaciony": 1,
+      "orientacionz": 0
+    },
+    {
+      "posx": 0,
+      "posy": 0,
+      "posz": 4,
+      "povx": 0,
+      "povy": 0,
+      "povz": 0,
+      "orientacionx": 0,
+      "orientaciony": 1,
+      "orientacionz": 0
+    },
+    {
+      "posx": 0,
+      "posy": 10,
+      "posz": 0,
+      "povx": 0,
+      "povy": 0,
+      "povz": 0,
+      "orientacionx": 1,
+      "orientaciony": 0,
+      "orientacionz": 1
+    },
+    {
+      "posx": 5,
+      "posy": 5,
+      "posz": 6,
+      "povx": 1,
+      "povy": 1,
+      "povz": 1,
+      "orientacionx": 0,
+      "orientaciony": 1,
+      "orientacionz": 0
+    }
+  ]
+}

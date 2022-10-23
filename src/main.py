@@ -36,18 +36,12 @@ class Main:
         for index in range(1, 5):
             glutAddMenuEntry("Camera{}".format(index), self.mundo.opcionesMenu["CAMARA_{}".format(index)])
 
-        menuMaterial = glutCreateMenu(self.mundo.onMenu)
-        index = 1
-        for index in range(1, 10):
-            glutAddMenuEntry("Material{}".format(index), self.mundo.opcionesMenu["MATERIAL_{}".format(index)])
-
         menuPrincipal = glutCreateMenu(self.mundo.onMenu)
         glutAddSubMenu("Color de fondo", menuFondo)
         glutAddSubMenu("Color del dibujo", menuDibujo)
         glutAddSubMenu("Forma", menuForma)
         glutAddSubMenu("Camaras", menuCamara)
-        glutAddSubMenu("Materiales", menuMaterial)
-        
+    
         #Carga el menú con el boton derecho.
         glutAttachMenu(GLUT_RIGHT_BUTTON)
 
@@ -78,7 +72,6 @@ class Main:
 
     def main(self, argv):
 
-        
         argc=1
         glutInit(argv)
 

@@ -37,7 +37,7 @@ class Material:
         glMaterialfv(GL_FRONT, GL_AMBIENT, self.luzambiente)
         glMaterialfv(GL_FRONT, GL_SPECULAR, self.luzspecular)
         glMaterialfv(GL_FRONT, GL_SHININESS, self.brillo)
-        print("Se ha activado el material {}".format(self.index))
+        # print("Se ha activado el material {}".format(self.index))
     
     @staticmethod
     def deserialize(data):

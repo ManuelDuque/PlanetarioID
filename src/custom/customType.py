@@ -1,4 +1,5 @@
 import enum
+from custom.astro import Astro
 from custom.foco import Foco
 from custom.camara import Camara
 from custom.material import Material
@@ -29,20 +30,44 @@ class CustomType(enum.Enum):
         CustomTypeProp.FILENAME: 'focos',
         CustomTypeProp.CLASS: Foco,
         CustomTypeProp.PROPNAME: 'focos',
-        CustomTypeProp.RELATIVE_PATH: './custom/focos/'
+        CustomTypeProp.RELATIVE_PATH: './custom/json/'
     }
     CAMARAS = {
-        CustomTypeProp.FILENAME: 'config',
+        CustomTypeProp.FILENAME: 'camaras',
         CustomTypeProp.CLASS: Camara,
-        CustomTypeProp.RELATIVE_PATH: './custom/',
+        CustomTypeProp.RELATIVE_PATH: './custom/json/',
         CustomTypeProp.PROPNAME: 'camaras'
     }
     MATERIALES = {
-        CustomTypeProp.FILENAME: 'config',
+        CustomTypeProp.FILENAME: 'materiales',
         CustomTypeProp.CLASS: Material,
-        CustomTypeProp.RELATIVE_PATH: './custom/',
+        CustomTypeProp.RELATIVE_PATH: './custom/json/',
         CustomTypeProp.PROPNAME: 'materiales'
     }
+    ASTROS = {
+        CustomTypeProp.FILENAME: 'planetas',
+        CustomTypeProp.CLASS: Astro,
+        CustomTypeProp.RELATIVE_PATH: './custom/json/',
+        CustomTypeProp.PROPNAME: 'astros'
+    }
+    # FOCOS = {
+    #     CustomTypeProp.FILENAME: 'testing',
+    #     CustomTypeProp.CLASS: Foco,
+    #     CustomTypeProp.PROPNAME: 'focos',
+    #     CustomTypeProp.RELATIVE_PATH: './custom/json/'
+    # }
+    # CAMARAS = {
+    #     CustomTypeProp.FILENAME: 'testing',
+    #     CustomTypeProp.CLASS: Camara,
+    #     CustomTypeProp.RELATIVE_PATH: './custom/json/',
+    #     CustomTypeProp.PROPNAME: 'camaras'
+    # }
+    # ASTROS = {
+    #     CustomTypeProp.FILENAME: 'testing',
+    #     CustomTypeProp.CLASS: Astro,
+    #     CustomTypeProp.RELATIVE_PATH: './custom/json/',
+    #     CustomTypeProp.PROPNAME: 'astros'
+    # }
 
     def __init__(self, value:dict):
         obligatoryProps = [CustomTypeProp.FILENAME, CustomTypeProp.CLASS]
